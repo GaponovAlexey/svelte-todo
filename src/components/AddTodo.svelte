@@ -1,8 +1,12 @@
-<div class="main_conteiner">
+<script>
+  let title = 'Ypi'
+</script>
+
+<section class="main_conteiner">
+  <div>logo {title}</div>
   <input class="todo-input" />
   <button class="">Add Todo</button>
-  
-</div>
+</section>
 
 <style>
   .main_conteiner {
