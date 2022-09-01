@@ -1,34 +1,43 @@
 <script>
-  import { onDestroy, onMount } from 'svelte'
-  import {getTodos } from '../utils/getTodos'
+  import { onMount, tick } from 'svelte'
+  import { getTodos } from '../utils/getTodos'
+  import { v4 as uuid } from 'uuid'
 
   export let title = 'Enter:'
   let items = []
-  let counter = 0
+  let text = ''
 
   onMount(() => {
-    getTodos().then((value) => {
-      items = value
-    })
+    const get = async () => {
+      const data = await getTodos()
+      items = data
+      text = 
+    }
+    await get()
   })
 
-//click  
+  //click
   const handleAddClick = () => {
-    items = [...items, 'item']
+    items = [...items, { id: uuid(), text }]
   }
   const reset = () => {
     items = []
   }
 
-  $: console.log(items)
+  const handleTextChange = async (e) => {
+    const { selectionStart, selectionEnd, value } = this
+    text = e.target.value
+    await tick()
+    this.value = ' '
+  }
 </script>
 
 <section class="main_conteiner">
   <div class="select">
     <label for="todo-text">{title}</label>
-    <label for="todo-text">{counter}</label>
+    <label for="todo-text">{text}</label>
   </div>
-  <input class="todo-input" />
+  <input value={text} on:input={handleTextChange} class="todo-input" />
   <button on:click={handleAddClick} class="">Add Todo</button>
   <button on:click={reset} class="">reset</button>
 </section>
@@ -46,7 +55,6 @@
     border-radius: 5px;
     padding: 5px;
     color: red;
-    
   }
   .todo-input {
     color: blueviolet;
