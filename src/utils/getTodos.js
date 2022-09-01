@@ -5,15 +5,15 @@ export const getTodos = () => {
     setTimeout(() => {
       resolve([
         {
-          id: uuid,
+          id: uuid(),
           text: 'todo item 1 from server',
         },
         {
-          id: uuid,
+          id: uuid(),
           text: 'todo item 2 from server',
         },
         {
-          id: uuid,
+          id: uuid(),
           text: 'todo item 3 from server',
         },
       ])
