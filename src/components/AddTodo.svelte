@@ -1,23 +1,28 @@
 <script>
-  export let title = 'Enter:'
+  import { onDestroy, onMount } from 'svelte'
 
+  export let title = 'Enter:'
+  import { onInterva } from '../utils/onInterva'
   let items = []
+  let counter = 0
+
+  onInterva(() => {
+    counter++
+  }, 1000)
 
   const handleAddClick = () => {
-    items = [...items, "item"]
+    items = [...items, 'item']
   }
   const reset = () => {
     items = []
   }
 
-$: console.log(items)
-
-  
+  $: console.log(items)
 </script>
-
 
 <section class="main_conteiner">
   <label for="todo-text">{title}</label>
+  <label for="todo-text">{counter}</label>
   <input class="todo-input" />
   <button on:click={handleAddClick} class="">Add Todo</button>
   <button on:click={reset} class="">reset</button>
@@ -25,7 +30,7 @@ $: console.log(items)
 
 <style>
   :global(label) {
-    color: blue
+    color: blue;
   }
   .main_conteiner {
     background-color: aqua;
