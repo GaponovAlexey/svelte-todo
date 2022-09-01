@@ -1,19 +1,20 @@
 <script>
-  import { onMount, tick } from 'svelte'
-  import { getTodos } from '../utils/getTodos'
+  import { onMount } from 'svelte'
   import { v4 as uuid } from 'uuid'
+  import { getTodos } from '../utils/getTodos'
+  import TodoItem from './TodoItem.svelte'
 
   export let title = 'Enter:'
-  let items = []
+  let items = getTodos()
   let text = ''
 
-  onMount(() => {
-    const get = async () => {
-      const data = await getTodos()
-      items = data
-    }
-    get()
-  })
+  // onMount(() => {
+  //   const get = async () => {
+  //     const data = await getTodos()
+  //     items = data
+  //   }
+  //   get()
+  // })
 
   //click
   const handleAddClick = () => {
@@ -23,16 +24,14 @@
     items = []
   }
 
-  const handleTextChange = async (e) => {
+  const handleTextChange = (e) => {
     text = e.target.value
-    await tick()
   }
 </script>
 
 <section class="main_conteiner">
   <div class="select">
     <label for="todo-text">{title}</label>
-    <label for="todo-text">{text}</label>
   </div>
   <input value={text} on:input={handleTextChange} class="todo-input" />
   <button on:click={handleAddClick} class="">Add Todo</button>
@@ -40,9 +39,15 @@
 </section>
 <section>
   <div>
-    {items.map(({id, text}) =>  text ) }
+    {#await items then items}
+      {#each items as { text }}
+      <TodoItem title={text} />
+      {:else}
+        nothing
+      {/each}
+    {/await}
   </div>
-  </section>
+</section>
 
 <style>
   .select {

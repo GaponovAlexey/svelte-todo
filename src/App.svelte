@@ -1,6 +1,6 @@
 <script>
   import Addtodo from './components/AddTodo.svelte'
-  export let name, age
+    export let name, age
 
   let title = 'Select:'
 </script>
@@ -10,6 +10,7 @@
 </main>
 <label for="todo">Some Text</label>
 <Addtodo {title} />
+
 
 <style>
   h1 {
