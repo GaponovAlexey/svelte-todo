@@ -11,9 +11,8 @@
     const get = async () => {
       const data = await getTodos()
       items = data
-      text = 
     }
-    await get()
+    get()
   })
 
   //click
@@ -25,10 +24,8 @@
   }
 
   const handleTextChange = async (e) => {
-    const { selectionStart, selectionEnd, value } = this
     text = e.target.value
     await tick()
-    this.value = ' '
   }
 </script>
 
@@ -41,7 +38,11 @@
   <button on:click={handleAddClick} class="">Add Todo</button>
   <button on:click={reset} class="">reset</button>
 </section>
-{JSON.stringify(items, null, 2)}
+<section>
+  <div>
+    {items.map(({id, text}) =>  text ) }
+  </div>
+  </section>
 
 <style>
   .select {
