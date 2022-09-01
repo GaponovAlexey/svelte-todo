@@ -1,11 +1,15 @@
 <script>
   import Addtodo from './components/AddTodo.svelte'
   export let name, age
+
+  let props = {
+    title: 'Select:',
+  }
 </script>
 
 <main>
   <h1>Hello {name} {age}!</h1>
-  <Addtodo />
+  <Addtodo {...props} />
 </main>
 
 <style>

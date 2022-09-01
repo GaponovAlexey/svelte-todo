@@ -1,18 +1,32 @@
 <script>
-  let title = 'Ypi'
+  export let title = 'Enter:'
+
+  let items = []
+
+  const handleAddClick = () => {
+    
+    items = [...items, "item"]
+  }
+
+$: console.log(items)
+
+  
 </script>
 
+//V
 <section class="main_conteiner">
-  <div>logo {title}</div>
+  <label for="todo-text">{title}</label>
   <input class="todo-input" />
-  <button class="">Add Todo</button>
+  <button on:click={handleAddClick} class="">Add Todo</button>
 </section>
 
 <style>
+  
   .main_conteiner {
     background-color: aqua;
     border-radius: 5px;
     padding: 5px;
+    color: red;
   }
   .todo-input {
     color: blueviolet;
