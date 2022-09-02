@@ -13,7 +13,8 @@
       const data = await getTodos()
       items = data
     }
-    get()
+
+     get()
   })
 
 

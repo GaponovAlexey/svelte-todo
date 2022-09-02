@@ -1,5 +1,5 @@
 <script>
-  import Todo from './components/AddTodo.svelte'
+  import TodoItem from './components/AddTodo.svelte'
     export let name, age
 
   let title = 'Select:'
@@ -7,7 +7,7 @@
 
 <h1>Hello {name} {age}!</h1>
 <label for="todo">Some Text</label>
-<Todo {title} />
+<TodoItem {title} />
 
 
 <style>
