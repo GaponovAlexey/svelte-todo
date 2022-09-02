@@ -16,10 +16,12 @@
     get()
   })
 
+
   //click
   const handleAddClick = () => {
     items = [...items, { id: uuid(), text }]
   }
+
   const reset = () => {
     items = []
   }
@@ -27,6 +29,7 @@
   const handleTextChange = (e) => {
     text = e.target.value
   }
+  
 </script>
 
 <section class="main_conteiner">
