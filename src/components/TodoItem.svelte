@@ -4,7 +4,6 @@
   const handleDoneChange = () => {
     console.log("handleDoneChange")
   }
-
   const handleRemoveClick = () => {
 
   }
@@ -13,7 +12,7 @@
 <div class="main_conteiner">
   <div class="main_input">
     <input on:input={handleDoneChange} type="checkbox"  />
-    <p>{title}</p>
+    <p  >{title}</p>
   </div>
   <button on:input={handleRemoveClick} class="remove_button">remove</button>
 </div>
