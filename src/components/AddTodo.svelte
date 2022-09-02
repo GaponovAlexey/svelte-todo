@@ -5,16 +5,16 @@
   import TodoItem from './TodoItem.svelte'
 
   export let title = 'Enter:'
-  let items = getTodos()
+  let items = []
   let text = ''
 
-  // onMount(() => {
-  //   const get = async () => {
-  //     const data = await getTodos()
-  //     items = data
-  //   }
-  //   get()
-  // })
+  onMount(() => {
+    const get = async () => {
+      const data = await getTodos()
+      items = data
+    }
+    get()
+  })
 
   //click
   const handleAddClick = () => {
@@ -39,13 +39,11 @@
 </section>
 <section>
   <div>
-    {#await items then items}
-      {#each items as { text }}
+      {#each items as { text, id } (id)}
       <TodoItem title={text} />
       {:else}
         nothing
       {/each}
-    {/await}
   </div>
 </section>
 

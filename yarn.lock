@@ -686,3 +686,8 @@
   "integrity" "sha512-F+P9Jil7UiSKSkppIiD94dN07AwvFixvLIj1Og1Rl9GGMuNipJnV9JzjD6XuqmAeiswGvUmNLjr5cFuXwNS77Q=="
   "resolved" "https://registry.npmjs.org/ws/-/ws-7.5.9.tgz"
   "version" "7.5.9"
+
+"yarn@^1.22.19":
+  "integrity" "sha512-/0V5q0WbslqnwP91tirOvldvYISzaqhClxzyUKXYxs07yUILIs5jx/k6CFe8bvKSkds5w+eiOqta39Wk3WxdcQ=="
+  "resolved" "https://registry.npmjs.org/yarn/-/yarn-1.22.19.tgz"
+  "version" "1.22.19"
