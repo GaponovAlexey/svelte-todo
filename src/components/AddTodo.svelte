@@ -14,9 +14,8 @@
       items = data
     }
 
-     get()
+    get()
   })
-
 
   //click
   const handleAddClick = () => {
@@ -30,26 +29,7 @@
   const handleTextChange = (e) => {
     text = e.target.value
   }
-  
 </script>
-
-<section class="main_conteiner">
-  <div class="select">
-    <label for="todo-text">{title}</label>
-  </div>
-  <input value={text} on:input={handleTextChange} class="todo-input" />
-  <button on:click={handleAddClick} class="">Add Todo</button>
-  <button on:click={reset} class="">reset</button>
-</section>
-<section>
-  <div>
-      {#each items as { text, id } (id)}
-      <TodoItem title={text} />
-      {:else}
-        nothing
-      {/each}
-  </div>
-</section>
 
 <style>
   .select {
@@ -68,3 +48,19 @@
     color: blueviolet;
   }
 </style>
+
+<section class="main_conteiner">
+  <div class="select">
+    <label for="todo-text">{title}</label>
+  </div>
+  <input value={text} on:input={handleTextChange} class="todo-input" />
+  <button on:click={handleAddClick} class="">Add Todo</button>
+  <button on:click={reset} class="">reset</button>
+</section>
+<section>
+  <div>
+    {#each items as { text, id } (id)}
+      <TodoItem title={text} />
+    {:else}nothing{/each}
+  </div>
+</section>

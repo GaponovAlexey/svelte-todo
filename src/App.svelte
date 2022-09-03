@@ -6,7 +6,9 @@
 </script>
 
 <h1>Hello {name} {age}!</h1>
+
 <label for="todo">Some Text</label>
+
 <TodoItem {title} />
 
 
