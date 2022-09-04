@@ -1,12 +1,14 @@
 <script>
-  export let text = 'title'
+  export let text 
 
   const handleDoneChange = () => {
     console.log('handleDoneChange')
   }
+
   const handleRemoveClick = () => {
     console.log('handleDoneChange')
   }
+
 </script>
 
 <style>
@@ -35,6 +37,7 @@
     font-weight: bold;
     cursor: pointer;
   }
+
 </style>
 
 <div class="main_conteiner">

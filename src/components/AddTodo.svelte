@@ -22,6 +22,7 @@
   <button on:click={handleAddClick} class="">Add Todo</button>
   <button on:click={reset} class="">reset</button>
 </section>
+
 <section>
   <div>
     {#await items then items}

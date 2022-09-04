@@ -6,7 +6,7 @@ let items = getTodos()
 const app  = new App({
   target: document.body,
   props: {
-    name: 'Ivan',
+    name: 'User',
     age: 22,
     items,
   },
