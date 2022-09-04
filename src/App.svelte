@@ -15,16 +15,17 @@
     get();
   });
 
-  const handleAddClick = (event) => {    items = [...items, { id: uuid(), text: event.detail }];
+  const handleAddClick = (event) => {
+    items = [...items, { id: uuid(), text: event.detail, done: false }];
   };
 </script>
 
 <AddTodo on:add={handleAddClick} />
-
+{items.filter(i => i.done).length}/{items.length}
 {#await items then items}
-  {#each items as { text }}
+  {#each items as { text, done }}
     <div class="todo-item-container">
-      <TodoItem {text} />
+      <TodoItem {text} { done} />
     </div>
   {:else}nothing{/each}
 {/await}

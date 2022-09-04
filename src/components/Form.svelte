@@ -4,19 +4,18 @@
   export let title = "Enter:";
   const dispatch = createEventDispatcher();
 
-
-  let text = ''
+  let text = "";
   const handleAddClick = () => {
     dispatch("add", text);
   };
   const handleTextChange = (e) => {
-  text = e.target.value
-  }
+    text = e.target.value;
+  };
 </script>
 
 <section class="main_conteiner">
   <label for="todo-text">{title}</label>
-  <input value={text} on:input={handleTextChange} class="todo-input" />
+  <input bind:value={text} class="todo-input" />
   <button on:click={handleAddClick} class="">Add Todo</button>
 </section>
 

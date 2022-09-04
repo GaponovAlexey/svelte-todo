@@ -7,16 +7,19 @@ export const getTodos = () => {
         {
           id: uuid(),
           text: 'todo item 1 from server',
+          done: false,
         },
         {
           id: uuid(),
           text: 'todo item 2 from server',
+          done: true,
         },
         {
           id: uuid(),
           text: 'todo item 3 from server',
+          done: false,
         },
       ])
-    }, 1000)
+    }, 500)
   })
 }
