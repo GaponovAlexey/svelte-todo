@@ -1,32 +1,17 @@
 <script>
   import { onMount } from 'svelte'
-  import { v4 as uuid } from 'uuid'
+ 
   import { getTodos } from '../utils/getTodos'
   import TodoItem from './TodoItem.svelte'
 
   export let title = 'Enter:'
-  let items = getTodos()
+  let items = []
   let text = ''
 
-  // onMount(() => {
-  //   const get = async () => {
-  //     const data = await getTodos()
-  //     items = data
-  //   }
-  //   get()
-  // })
+ 
 
   //click
-  const handleAddClick = () => {
-    items = [...items, { id: uuid(), text }]
-  }
-  const reset = () => {
-    items = []
-  }
-
-  const handleTextChange = (e) => {
-    text = e.target.value
-  }
+  
 </script>
 
 <section class="main_conteiner">
@@ -41,7 +26,7 @@
   <div>
     {#await items then items}
       {#each items as { text }}
-      <TodoItem title={text} />
+      {text}
       {:else}
         nothing
       {/each}

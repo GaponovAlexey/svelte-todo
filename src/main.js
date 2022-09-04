@@ -1,10 +1,14 @@
 import App from './App.svelte'
+import { getTodos } from './utils/getTodos'
 
-const app = new App({
+let items = getTodos()
+
+const app  = new App({
   target: document.body,
   props: {
     name: 'Ivan',
     age: 22,
+    items,
   },
 })
 
