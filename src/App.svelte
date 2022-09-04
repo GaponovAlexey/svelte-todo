@@ -1,64 +1,30 @@
 <script>
-  import TodoItem from './components/TodoItem.svelte'
-  import { v4 as uuid } from 'uuid'
-  export let name, age
-  export let items = [...items]
+  import { onMount } from "svelte";
+  import { getTodos } from "./utils/getTodos";
+  import { v4 as uuid } from "uuid";
+  import TodoItem from "./components/TodoItem.svelte";
+  import AddTodo from "./components/AddTodo.svelte";
 
-  let title = 'Select:'
-  let text = ''
+  let items = [];
 
-  $: console.log(items)
+  onMount(() => {
+    const get = async () => {
+      const data = await getTodos();
+      items = data;
+    };
+    get();
+  });
 
-  const handleAddClick = () => {
-    items = [...items, { id: uuid(), text }]
-  }
-  const reset = () => {
-    items = []
-  }
-
-  const handleTextChange = (e) => {
-    text = e.target.value
-  }
+  const handleAddClick = (event) => {    items = [...items, { id: uuid(), text: event.detail }];
+  };
 </script>
 
-<style>
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
-  }
-  .select {
-    display: block;
-  }
-  :global(label) {
-    color: blue;
-  }
-  .main_conteiner {
-    background-color: aqua;
-    border-radius: 5px;
-    padding: 5px;
-    color: red;
-  }
-  .todo-input {
-    color: blueviolet;
-  }
-</style>
+<AddTodo on:add={handleAddClick} />
 
-<section class="main_conteiner">
-  <h1>Hello {name} {age}!</h1>
-  <div class="select">
-    <label for="todo-text">{title}</label>
-  </div>
-  <input value={text} on:input={handleTextChange} class="todo-input" />
-  <button on:click={handleAddClick} class="">Add Todo</button>
-  <button on:click={reset} class="">reset</button>
-</section>
-<label for="todo">Some Text</label>
-<div>
-  {#await items then items}
-    {#each items as { text }}
+{#await items then items}
+  {#each items as { text }}
+    <div class="todo-item-container">
       <TodoItem {text} />
-    {:else}nothing{/each}
-  {/await}
-</div>
+    </div>
+  {:else}nothing{/each}
+{/await}
