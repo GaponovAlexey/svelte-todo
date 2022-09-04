@@ -1,12 +1,13 @@
 <script>
+import { createEventDispatcher } from "svelte";
+
+
+  const dispatch  = createEventDispatcher()
   export let text 
+  export let done
 
-  const handleDoneChange = () => {
-    console.log('handleDoneChange')
-  }
-
-  const handleRemoveClick = () => {
-    console.log('handleDoneChange')
+  const handleDoneChange = (e) => {
+    dispatch('doneChange', e.target.chacked)
   }
 
 </script>
@@ -42,8 +43,8 @@
 
 <div class="main_conteiner">
   <div class="main_input">
-    <input on:input={handleDoneChange} type="checkbox" />
+    <input chacked={done} on:input={handleDoneChange} type="checkbox" />
     <p>{text}</p>
   </div>
-  <button on:input={handleRemoveClick} class="remove_button">remove</button>
+  <button  class="remove_button">remove</button>
 </div>
