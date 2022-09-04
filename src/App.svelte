@@ -1,8 +1,8 @@
 <script>
+  import TodoItem from './components/TodoItem.svelte'
   import { v4 as uuid } from 'uuid'
   export let name, age
   export let items = [...items]
-
 
   let title = 'Select:'
   let text = ''
@@ -57,6 +57,8 @@
 <label for="todo">Some Text</label>
 <div>
   {#await items then items}
-    {#each items as { text }}{text}{:else}nothing{/each}
+    {#each items as { text }}
+      <TodoItem {text} />
+    {:else}nothing{/each}
   {/await}
 </div>

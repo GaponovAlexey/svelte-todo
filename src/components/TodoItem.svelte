@@ -1,5 +1,5 @@
 <script>
-  export let title = 'title'
+  export let text = 'title'
 
   const handleDoneChange = () => {
     console.log('handleDoneChange')
@@ -40,7 +40,7 @@
 <div class="main_conteiner">
   <div class="main_input">
     <input on:input={handleDoneChange} type="checkbox" />
-    <p>{title}</p>
+    <p>{text}</p>
   </div>
   <button on:input={handleRemoveClick} class="remove_button">remove</button>
 </div>
